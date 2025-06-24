@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
-use App\Types;
-use App\Restaurants;
-use App\Categories;
-use App\Menu;
-use App\Review;
-use App\Order;
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\Restaurants;
+use App\Models\Review;
+use App\Models\Types;
+use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 
 

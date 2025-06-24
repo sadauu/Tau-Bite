@@ -36,11 +36,11 @@
                  
                 <tr>
                 <td>{{date('m-d-Y',$order_item->created_date)}}</td> 
-                <td><a href="{{ url('restaurants/'.\App\Restaurants::getRestaurantsInfo($order_item->restaurant_id)->restaurant_slug) }}" class="text-regular">{{ \App\Restaurants::getRestaurantsInfo($order_item->restaurant_id)->restaurant_name }}</a>
+                <td><a href="{{ url('restaurants/'.\App\Models\Restaurants::getRestaurantsInfo($order_item->restaurant_id)->restaurant_slug) }}" class="text-regular">{{ \App\Models\Restaurants::getRestaurantsInfo($order_item->restaurant_id)->restaurant_name }}</a>
                 </td> 
                 <td>{{$order_item->item_name}} </td>
                 <td><strong class="">{{$order_item->quantity}}</strong></td>
-                <td><strong class="">{{getcong('currency_symbol')}}{{ \App\Menu::getMenunfo($order_item->item_id)->price }}</strong></td>
+                <td><strong class="">{{getcong('currency_symbol')}}{{ \App\Models\Menu::getMenunfo($order_item->item_id)->price }}</strong></td>
                 <td><strong class="">{{getcong('currency_symbol')}}{{$order_item->item_price}}</strong></td>
                 <td><strong class="">{{$order_item->status}}</strong></td>
                 @if($order_item->status!='Cancel' and $order_item->status!='Completed')

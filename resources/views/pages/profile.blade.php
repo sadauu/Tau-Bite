@@ -18,10 +18,18 @@
     <div class="col-md-6">
         <div class="box_style_2" id="order_process">
           <h2 class="inner">Edit Profile</h2>
-          {!! Form::open(array('url' => 'profile','class'=>'','id'=>'myProfile','role'=>'form')) !!} 
+
+          <form action="{{ url('profile') }}"  class="" id="myProfile">
 
             <div class="message">
-                        <!--{!! Html::ul($errors->all(), array('class'=>'alert alert-danger errors')) !!}-->
+                        @if ($errors->any())
+    <ul class="alert alert-danger errors">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
                                     @if (count($errors) > 0)
                           <div class="alert alert-danger">
                           
@@ -59,8 +67,8 @@
           <div class="row">
             <div class="col-md-6 col-sm-6">
               <div class="form-group">
-                <label>City</label>
-                <input type="text" id="city" name="city" value="{{$user->city}}" class="form-control" placeholder="Your city">
+                <label>Campus</label>
+                <input type="text" id="campus" name="Campus" value="{{$user->campus}}" class="form-control" placeholder="Your Campus">
               </div>
             </div>
             <!-- <div class="col-md-6 col-sm-6">
@@ -79,7 +87,7 @@
             </div>
           </div>
             <button type="submit" class="btn btn-submit">Update Profile</button>
-      {!! Form::close() !!} 
+      </form> 
         </div>
         <!-- End box_style_1 --> 
       </div>

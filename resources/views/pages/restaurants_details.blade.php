@@ -124,12 +124,12 @@
                 </div>
                 <hr class="styled">
               
-                 @if(Auth::check() and \App\Review::checkUserReview(Auth::id(),$restaurant->id)=='')
+                 @if(Auth::check() and \App\Models\Review::checkUserReview(Auth::id(),$restaurant->id)=='')
             
               <a href="#" class="btn_1 add_bottom_15" data-toggle="modal" data-target="#myReview">
             Leave a review</a>
             
-            @elseif(\App\Review::checkUserReview(Auth::id(),$restaurant->id)!='')
+            @elseif(\App\Models\Review::checkUserReview(Auth::id(),$restaurant->id)!='')
 
               <a href="#0" class="btn_1 add_bottom_15">
             Already reviewed</a>
@@ -144,7 +144,7 @@
               </div>
                @foreach($reviews as $i => $review)
         <div class="review_strip_single"> <img src="{{ URL::asset('site_assets/img/male-icon.png') }}" alt="" class="img-circle"> <small> - {{date('d F Y',$review->date)}} -</small>
-          <h4>{{ \App\User::getUserFullname($review->user_id) }} </h4>
+          <h4>{{ \App\Models\User::getUserFullname($review->user_id) }} </h4>
           <p> {{$review->review_text}} </p>
           <div class="row">
             <div class="col-md-3">
@@ -243,7 +243,9 @@
   <div class="modal-dialog">
     <div class="modal-content modal-popup"> <a href="#" class="close-link"><i class="fa fa-times-circle-o"></i></a>
       
-        {!! Form::open(array('url' => 'restaurants/'.$restaurant->restaurant_slug.'/restaurant_review','class'=>'popup-form','name'=>'review','id'=>'review','role'=>'form')) !!} 
+        <form action="{{ url('restaurants/'.$restaurant->restaurant_slug.'/restaurant_review') }}" method="POST" class="popup-form" id="review" name='review'>
+          @csrf
+          @method('POST')
         <div class="login_icon"><i class="fa fa-comments-o"></i></div>
         <input name="restaurant_id" id="restaurant_id" type="hidden" value="{{$restaurant->id}}">
           
@@ -301,7 +303,7 @@
         <textarea name="review_text" id="review_text" class="form-control form-white" style="height:100px" placeholder="Write your review"></textarea>
         
         <input type="submit" value="Submit" class="review_btn-submit" id="submit-review">
-      {!! Form::close() !!} 
+      </form>
       <div id="message-review"></div>
     </div>
   </div>

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
-use App\Order;
-use App\Categories;
-use App\Restaurants;
-
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Order;
+use App\Models\Restaurants;
+use App\Models\User;
+
+use Auth;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image; 
+use Session;
 
 
 class OrderController extends MainAdminController
@@ -53,8 +54,23 @@ class OrderController extends MainAdminController
             return redirect('admin/dashboard');
             
         }
-        
-        return view('admin.pages.order_list_for_all',compact('order_list'));
+
+// Group orders by address (from users table)
+$ordersByAddress = DB::table('restaurant_order')
+    ->join('users', 'restaurant_order.user_id', '=', 'users.id')
+    ->select('users.address', DB::raw('COUNT(*) as total_orders'))
+    ->groupBy('users.address')
+    ->orderByDesc('total_orders')
+    ->get();
+
+// Group orders by campus (from users table)
+$ordersByCampus = DB::table('restaurant_order')
+    ->join('users', 'restaurant_order.user_id', '=', 'users.id')
+    ->select('users.campus', DB::raw('COUNT(*) as total_orders'))
+    ->groupBy('users.campus')
+    ->orderByDesc('total_orders')
+    ->get();
+        return view('admin.pages.order_list_for_all',compact('order_list', 'ordersByAddress', 'ordersByCampus'));
     }
 
     public function order_status($id,$order_id,$status)   
@@ -116,9 +132,26 @@ class OrderController extends MainAdminController
             
         }
         
-         
+         // Group orders by address (from users table)
+         $ordersByAddress = DB::table('restaurant_order')
+         ->join('users', 'restaurant_order.user_id', '=', 'users.id')
+         ->select('users.address', DB::raw('COUNT(*) as total_orders'))
+         ->where('restaurant_order.status', 'Pending')
+         ->where('restaurant_order.restaurant_id', $restaurant_id)
+         ->groupBy('users.address')
+         ->orderByDesc('total_orders')
+         ->get();
+     
+     $ordersByCampus = DB::table('restaurant_order')
+         ->join('users', 'restaurant_order.user_id', '=', 'users.id')
+         ->select('users.campus', DB::raw('COUNT(*) as total_orders'))
+         ->where('restaurant_order.status', 'Pending')
+         ->where('restaurant_order.restaurant_id', $restaurant_id)
+         ->groupBy('users.campus')
+         ->orderByDesc('total_orders')
+         ->get();
 
-        return view('admin.pages.owner.order_list',compact('order_list','restaurant_id'));
+        return view('admin.pages.owner.order_list',compact('order_list','restaurant_id', 'ordersByAddress', 'ordersByCampus'));
     }
 
     public function owner_order_status($order_id,$status)   

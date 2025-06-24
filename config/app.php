@@ -146,13 +146,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
          */
-        Intervention\Image\ImageServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
+        // Intervention\Image\ImageServiceProvider::class,
+        // Collective\Html\HtmlServiceProvider::class,
+        // RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -211,11 +212,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Input' => Illuminate\Support\Facades\Input::class, 
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
+        // 'Input' => Illuminate\Support\Facades\Input::class, 
+        // 'Image' => Intervention\Image\Facades\Image::class,
+        // 'Form' => Collective\Html\FormFacade::class,
+        // 'Html' => Collective\Html\HtmlFacade::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+        // 'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

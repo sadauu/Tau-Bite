@@ -28,7 +28,9 @@
    
    	<div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/users/adduser'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
+                <form action="{{ url('admin/users/adduser') }}" method="POST" class="form-horizontal padding-15" id="user_form" name="user_form" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                 <input type="hidden" name="id" value="{{ isset($user->id) ? $user->id : null }}">
                   
                 
@@ -107,7 +109,7 @@
                     </div>
                 </div>
                 
-                {!! Form::close() !!} 
+                </form> 
             </div>
         </div>
    

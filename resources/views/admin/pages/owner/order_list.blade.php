@@ -7,6 +7,50 @@
 		
 		<h2>Order List</h2>
          
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Orders Grouped by Address</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @forelse($ordersByAddress as $group)
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>
+                                        <i class="fa fa-map-marker text-primary me-2"></i>
+                                        {{ $group->address ?? 'No Address' }}
+                                    </span>
+                                    <span class="badge bg-primary rounded-pill">{{ $group->total_orders }} orders</span>
+                                </li>
+                            @empty
+                                <li class="list-group-item text-muted">No data available.</li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Orders Grouped by Campus</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            @forelse($ordersByCampus as $group)
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>
+                                        <i class="fa fa-university text-success me-2"></i>
+                                        {{ $group->campus ?? 'No Campus' }}
+                                    </span>
+                                    <span class="badge bg-success rounded-pill">{{ $group->total_orders }} orders</span>
+                                </li>
+                            @empty
+                                <li class="list-group-item text-muted">No data available.</li>
+                            @endforelse
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
 	@if(Session::has('flash_message'))
 				    <div class="alert alert-success">
@@ -40,10 +84,10 @@
             @foreach($order_list as $i => $order)
             <tr>
                 <td>{{ date('m-d-Y',$order->created_date)}}</td>
-                <td>{{ \App\User::getUserFullname($order->user_id) }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->mobile }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->email }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->address }}</td>
+                <td>{{ \App\Models\User::getUserFullname($order->user_id) }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->mobile }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->email }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->address }}</td>
                 <td>{{ $order->item_name }}</td>
                 <td>{{ $order->quantity }}</td>
                 <td>{{getcong('currency_symbol')}}{{ $order->item_price }}</td>

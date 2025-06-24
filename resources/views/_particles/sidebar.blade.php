@@ -6,7 +6,7 @@
       <tbody>
       </tbody>
       </table>  
-      @foreach(\App\Cart::where('user_id',Auth::id())->orderBy('id')->get() as $n=>$cart_item)
+      @foreach(\App\Models\Cart::where('user_id',Auth::id())->orderBy('id')->get() as $n=>$cart_item)
             <table class="table table_summary">
               <tbody>
               <tr>
@@ -42,7 +42,7 @@
              <li>
                 <label><a href="{{URL::to('restaurants/')}}">All</a></label>
               </li>
-              @foreach(\App\Types::orderBy('type')->get() as $type)
+              @foreach(\App\Models\Types::orderBy('type')->get() as $type)
               <li>
                 <label><a href="{{URL::to('restaurants/type/'.$type->id)}}">{{$type->type}}</a></label>
               </li>

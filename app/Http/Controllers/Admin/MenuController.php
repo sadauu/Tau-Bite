@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
-use App\Menu;
-use App\Categories;
-use App\Restaurants;
-use App\Order;
-
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\Restaurants;
+use App\Models\User;
+
+use Auth;
 use Illuminate\Http\Request;
-use Session;
 use Intervention\Image\Facades\Image; 
+use Session;
 
 
 class MenuController extends MainAdminController
@@ -62,7 +62,7 @@ class MenuController extends MainAdminController
     public function addnew(Request $request)
     { 
     	
-    	$data =  \Input::except(array('_token')) ;
+    	$data =  $request->except(array('_token')) ;
 	    
 	    $rule=array(
 		        'menu_cat' => 'required',

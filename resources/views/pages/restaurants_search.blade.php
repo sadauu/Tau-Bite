@@ -45,7 +45,7 @@
                 @endif
                
                 @endfor
-                (<small><a href="{{URL::to('restaurants/'.$restaurant->restaurant_slug)}}">Read {{\App\Review::getTotalReview($restaurant->id)}} reviews</a></small>)
+                (<small><a href="{{URL::to('restaurants/'.$restaurant->restaurant_slug)}}">Read {{\App\Models\Review::getTotalReview($restaurant->id)}} reviews</a></small>)
               </div>
 
                

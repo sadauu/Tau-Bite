@@ -1,25 +1,29 @@
 <?php
+
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
 |
-
+*/
 
 Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	
 	Route::get('/', 'IndexController@index');
 	
 	Route::post('login', 'IndexController@postLogin');
+	
 	Route::get('logout', 'IndexController@logout');
 	 
 	Route::get('dashboard', 'DashboardController@index');
@@ -111,9 +115,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::get('/', 'IndexController@index');
 
-Route::get('login', 'IndexController@login');
+Route::get('login', 'IndexController@login')->name('login');
 
-Route::post('login', 'IndexController@postLogin');
+Route::post('login', 'IndexController@postLogin')->name('login.post');
 
 Route::get('register', 'IndexController@register');
 
@@ -178,7 +182,13 @@ Route::post('contact_send', 'IndexController@contact_send');
 
 
 // Paystack route
-// Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
-Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+// Route::get('/pay', [PaymentController
+// ::class, 'redirectToGateway'])->name('pay');
+// Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
 
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/pay', [PaymentController::class, 'paymentPage'])->name('pay');
+Route::post('/paystack/callback', [PaymentController::class, 'storeTransaction'])->name('payment.callback');
+Route::get('/transactions', fn () => \App\Models\Transaction::latest()->get());
+
+Route::get('/payment/success', [PaymentController::class, 'successfulPayment'])->name('payment.success');
+Route::get('/payment/failed', [PaymentController::class, 'failedPayment'])->name('payment.failed');

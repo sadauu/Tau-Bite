@@ -1,21 +1,46 @@
+@php
+
+$total_restaurant = \App\Models\Restaurants::getTotalRestaurants();
+$total_people_served = \App\Models\Restaurants::getTotalPeopleServed();
+$total_registered_users =     \App\Models\User::getTotalUsers();
+@endphp
+
 <div id="banner">
   <section>
   <div id="subheader">
     <div id="sub_content" class="animated zoomIn">
-      <h1>Place Your Orders Now!</h1>
+      <h1>Place Your Order And Get It Delivered Now!</h1>
       <div class="container-4">
-        {!! Form::open(array('url' => 'restaurants/search','class'=>'','id'=>'search','role'=>'form')) !!} 
-          <input type="search" placeholder="Cafeteria name or address..." name="search_keyword" id="search">
-          <button class="icon" type="submit"><i class="fa fa-search"></i></button>
-        {!! Form::close() !!} 
+        <form action="{{ url('restaurants/search') }}" method="POST" id="search-form" class="my-4">
+          @csrf
+          <div class="position-relative">
+              <input 
+                  type="search" 
+                  class="form-control ps-4 pe-5 py-3 rounded-pill shadow-sm border-light" 
+                  placeholder="Search cafeteria name or address..." 
+                  name="search_keyword" 
+                  id="search_keyword" 
+                  required
+              >
+              <button type="submit" 
+                  class="btn position-absolute top-50 end-0 translate-middle-y me-3 p-0 border-0 bg-transparent"
+                  id="search-btn"
+              >
+                  <i class="fa fa-search text-primary fs-5"></i>
+              </button>
+          </div>
+      </form>
+      
+      
+      
     </div>
     </div>
   </div>
   <div class="hidden-xs" id="count">
     <ul>
-      <li><span class="number">{{getcong('total_restaurant')}}</span> Cafeteria</li>
-      <li><span class="number">{{getcong('total_people_served')}}</span> People Served</li>
-      <li><span class="number">{{getcong('total_registered_users')}}</span> Registered Users</li>
+      <li><span class="number">{{$total_restaurant}}</span> Cafeteria</li>
+      <li><span class="number">{{$total_people_served}}</span> People Served</li>
+      <li><span class="number">{{$total_registered_users}}</span> Registered Users</li>
     </ul>
   </div>
   </section>

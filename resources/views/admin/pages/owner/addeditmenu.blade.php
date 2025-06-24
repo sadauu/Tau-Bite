@@ -28,7 +28,9 @@
    
    	<div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/menu/addmenu'),'class'=>'form-horizontal padding-15','name'=>'menu_form','id'=>'menu_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
+                <form action="{{ url('admin/menu/addmenu') }}" method="POST" class="form-horizontal padding-15" id="menu_form" name="menu_form" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                 
                 <input type="hidden" name="restaurant_id" value="{{$restaurant_id}}">
                 <input type="hidden" name="id" value="{{ isset($menu->id) ? $menu->id : null }}">
@@ -96,7 +98,7 @@
                     </div>
                 </div>
                 
-                {!! Form::close() !!} 
+                </form> 
             </div>
         </div>
    

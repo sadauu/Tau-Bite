@@ -36,13 +36,13 @@
             @foreach($review_list as $i => $review)
             <tr>
                 <td>{{ date('m-d-Y',$review->date)}}</td>
-                <td>{{ \App\User::getUserFullname($review->user_id) }}</td>                
-                <td>{{ \App\User::getUserInfo($review->user_id)->email }}</td>                
+                <td>{{ \App\Models\User::getUserFullname($review->user_id) }}</td>                
+                <td>{{ \App\Models\User::getUserInfo($review->user_id)->email }}</td>                
                 <td class="text-center"> 
                     <div class="h4">
                         @for($x = 0; $x < 5; $x++)
                   
-                          @if($x < \App\Review::getUserAvgReview($review->user_id))
+                          @if($x < \App\Models\Review::getUserAvgReview($review->user_id))
                             <span class="fa fa-fw fa-star text-success"></span>
                           @else
                             <span class="fa fa-fw fa-star-o text-muted"></span>

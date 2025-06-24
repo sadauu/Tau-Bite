@@ -45,8 +45,9 @@
     <!-- Tab panes -->
     <div class="tab-content tab-content-default">
         <div role="tabpanel" class="tab-pane active" id="footer_widgets">             
-            {!! Form::open(array('url' => 'admin/footer_widgets','class'=>'form-horizontal padding-15','name'=>'about_contact_widgets_form','id'=>'about_contact_widgets_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                
+            <form action="{{ url('admin/footer_widgets') }}" method="POST" class="form-horizontal padding-15" name="about_contact_widgets_form" id="about_contact_widgets_form" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
                   
                 <!-- <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Widget 1 Title</label>
@@ -108,11 +109,13 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
         <div role="tabpanel" class="tab-pane" id="about_widget">             
-            {!! Form::open(array('url' => 'admin/about_widgets','class'=>'form-horizontal padding-15','name'=>'about_contact_widgets_form','id'=>'about_contact_widgets_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                
+            <form action="{{ url('admin/about_widgets') }}" method="POST" class="form-horizontal padding-15" name="about_contact_widgets_form" id="about_contact_widgets_form" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                  
                   
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">About Title</label>
@@ -136,12 +139,13 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
         <div role="tabpanel" class="tab-pane" id="followus">
-            
-            {!! Form::open(array('url' => 'admin/socialmedialink','class'=>'form-horizontal padding-15','name'=>'socialmedialink_form','id'=>'socialmedialink_form','role'=>'form')) !!}
-                
+            <form action="{{ url('admin/socialmedialink') }}" method="POST" class="form-horizontal padding-15" name="socialmedialink_form" id="socialmedialink_form">
+                @csrf
+                @method('POST')
+                  
                  
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Facebook URL</label>
@@ -195,13 +199,14 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
         
-        <div role="tabpanel" class="tab-pane" id="need_help">
-            
-            {!! Form::open(array('url' => 'admin/need_help','class'=>'form-horizontal padding-15','name'=>'need_help_form','id'=>'need_help_form','role'=>'form')) !!}
-                
+        <div role="tabpanel" class="tab-pane" id="need_help">                
+            <form action="{{ url('admin/need_help') }}" method="POST" class="form-horizontal padding-15" name="need_help_form" id="need_help_form">
+                @csrf
+                @method('POST')
+                  
                  
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Need Help Title</label>
@@ -230,7 +235,7 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
         
         

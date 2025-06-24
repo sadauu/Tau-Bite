@@ -28,7 +28,8 @@
    
    	<div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/restaurants/view/'.$restaurant_id.'/categories/addcategory'),'class'=>'form-horizontal padding-15','name'=>'category_form','id'=>'category_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
+                <form action="{{ url('admin/restaurants/view/'.$restaurant_id.'/categories/addcategory') }}" class="form-horizontal padding-15" name='category_form' id="category_form" enctype="multipart/form-data">
+                    @csrf
                 
                 <input type="hidden" name="restaurant_id" value="{{$restaurant_id}}">
                 <input type="hidden" name="id" value="{{ isset($cat->id) ? $cat->id : null }}">
@@ -46,7 +47,7 @@
                     </div>
                 </div>
                 
-                {!! Form::close() !!} 
+                </form> 
             </div>
         </div>
    

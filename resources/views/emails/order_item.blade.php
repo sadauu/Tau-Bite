@@ -35,7 +35,7 @@ body{background:#FFF;height:100%;width:100%;font-weight:400;margin:0;padding:0;f
 		<tr style="border-bottom:1px solid #ccc">                      
 		  <td style="width:40%;color:#565656;text-align:left;padding:10px;vertical-align: middle;">{{$order->item_name}}</td>
 		  <td style="width:12%;color:#565656;text-align:left;padding:10px;vertical-align: middle;">{{$order->quantity}}</td>
-		  <td style="width:12%;color:#565656;text-align:left;padding:10px;vertical-align: middle;">{{getcong('currency_symbol')}}{{ \App\Menu::getMenunfo($order->item_id)->price }}</td>
+		  <td style="width:12%;color:#565656;text-align:left;padding:10px;vertical-align: middle;">{{getcong('currency_symbol')}}{{ \App\Models\Menu::getMenunfo($order->item_id)->price }}</td>
 		  <td style="width:38%;color:#565656;text-align:left;padding:10px;vertical-align: middle;">	{{getcong('currency_symbol')}}{{$order->item_price}}
 		  	<?php $sum=$sum+$order->item_price;?>
 		</td>

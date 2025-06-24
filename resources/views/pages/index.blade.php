@@ -22,40 +22,41 @@
   </div>
 
   <div class="white_bg">
-    <div class="container margin_60">
-      <div class="main_title">
-        <h2 class="nomargin_top">Choose from Most Popular</h2>         
+   
+    <div class="container my-5">
+      <div class="main_title text-center mb-4">
+          <h2 class="nomargin_top">Choose from Most Popular</h2>
       </div>
-      <div class="row">
-        @foreach($restaurants as $i => $restaurant)
-        <div class="col-md-6"> <a class="strip_list" href="{{URL::to('restaurants/menu/'.$restaurant->restaurant_slug)}}">
-          <div class="desc">
-            <h3>{{ $restaurant->restaurant_name }}</h3>
-          <div class="type"> {{$restaurant->type}} </div>
-          <div class="location">{{$restaurant->restaurant_address}}  </div>
-            
-            <div class="rating"> 
-                @for($x = 0; $x < 5; $x++)
-                    
-                @if($x < $restaurant->review_avg)
-                  <i class="fa fa-star"></i>
-                @else
-                  <i class="fa fa-star fa fa-star-o"></i>
-                @endif
-               
-                @endfor
-                
+      <div class="row g-4">
+          @foreach($popularItems as $i => $restaurant)
+              <div class="col-12 col-md-6">
+                  <a class="strip_list d-flex align-items-center p-3 rounded shadow-sm text-decoration-none bg-white h-100" 
+                     href="{{ URL::to('restaurants/menu/'.$restaurant->restaurant_slug) }}">
+                      <div class="thumb_strip me-3 flex-shrink-0">
+                          <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" 
+                               alt="{{ $restaurant->restaurant_name }}" 
+                               class="rounded-circle" 
+                               style="width: 70px; height: 70px; object-fit: cover;">
+                      </div>
+                      <div class="desc flex-grow-1">
+                          <h3 class="mb-1 text-dark">{{ $restaurant->restaurant_name }}</h3>
+                          <div class="type small text-muted mb-1">{{ $restaurant->type }}</div>
+                          <div class="location small text-secondary mb-2">{{ $restaurant->restaurant_address }}</div>
+                          <div class="rating">
+                              @for($x = 0; $x < 5; $x++)
+                              @if($x < $restaurant->review_avg)
+                              <i class="fa fa-star text-warning"></i>
+                          @else
+                              <i class="fa fa-star-o text-warning"></i>
+                          @endif
+                      @endfor
+                  </div>
               </div>
-            <div class="thumb_strip"> <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" alt="{{ $restaurant->restaurant_name }}"> </div>
-          </div>
-          </a> 
-        </div>
-        @endforeach
-          
-           
-           
+          </a>
       </div>
-    </div>
+  @endforeach
+</div>
+</div>
   </div>
  
 <!-- End section --> 

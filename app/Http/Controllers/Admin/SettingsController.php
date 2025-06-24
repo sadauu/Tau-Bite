@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\User;
-use App\Settings;
+use App\Models\User;
+use App\Models\Settings;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Session;
@@ -38,7 +38,7 @@ class SettingsController extends MainAdminController
     	$settings = Settings::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	    
 	    $rule=array(
 		        'site_name' => 'required',
@@ -119,7 +119,7 @@ class SettingsController extends MainAdminController
     	$settings = Settings::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	    
 	     
 	    $inputs = $request->all();
@@ -218,7 +218,7 @@ class SettingsController extends MainAdminController
     	$settings = Settings::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	    
 	     
 	    $inputs = $request->all();
@@ -242,7 +242,7 @@ class SettingsController extends MainAdminController
     	$settings = Settings::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	    
 	     
 	    $inputs = $request->all();

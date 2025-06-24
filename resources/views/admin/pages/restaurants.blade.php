@@ -36,9 +36,9 @@
             <tr>
                 <td><a href="{{ url('admin/restaurants/view/'.$restaurant->id) }}" class="text-regular">{{ $restaurant->restaurant_name }}</a>
                     <a href="{{ url('admin/restaurants/view/'.$restaurant->id) }}" class="text-muted"><i class="md md-local-restaurant"></i></a></td>  
-                <td>{{App\Restaurants::getMenuCategories($restaurant->id)}}</td>
-                <td>{{App\Restaurants::getMenuItems($restaurant->id)}}</td>
-                <td>{{App\Restaurants::getOrders($restaurant->id)}}</td>                          
+                <td>{{\App\Models\Restaurants::getMenuCategories($restaurant->id)}}</td>
+                <td>{{\App\Models\Restaurants::getMenuItems($restaurant->id)}}</td>
+                <td>{{\App\Models\Restaurants::getOrders($restaurant->id)}}</td>                          
                 <td class="text-center">
                 <a href="{{ url('admin/restaurants/view/'.$restaurant->id) }}" class="btn btn-default btn-rounded"><i class="md md-settings-display"></i></a>
                 <a href="{{ url('admin/restaurants/addrestaurant/'.$restaurant->id) }}" class="btn btn-default btn-rounded"><i class="md md-edit"></i></a>

@@ -41,15 +41,15 @@
             @foreach($order_list as $i => $order)
             <tr>
                 <td>{{ date('m-d-Y',$order->created_date)}}</td>
-                <td>{{ \App\User::getUserFullname($order->user_id) }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->mobile }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->email }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->address }}</td>
-                <td><a href="{{ url('admin/restaurants/view/'.$order->restaurant_id) }}" class="text-regular">{{ \App\Restaurants::getRestaurantsInfo($order->restaurant_id)->restaurant_name }}</a>
+                <td>{{ \App\Models\User::getUserFullname($order->user_id) }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->mobile }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->email }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->address }}</td>
+                <td><a href="{{ url('admin/restaurants/view/'.$order->restaurant_id) }}" class="text-regular">{{ \App\Models\Restaurants::getRestaurantsInfo($order->restaurant_id)->restaurant_name }}</a>
                 </td>
                 <td>{{ $order->item_name }}</td>
                 <td>{{ $order->quantity }}</td>
-                <td>{{getcong('currency_symbol')}}{{ \App\Menu::getMenunfo($order->item_id)->price }}</td>
+                <td>{{getcong('currency_symbol')}}{{ \App\Models\Menu::getMenunfo($order->item_id)->price }}</td>
                 <td>{{getcong('currency_symbol')}}{{ $order->item_price }}</td>
                 <td>{{ $order->status }}</td>
                 <td class="text-center">

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
 use App\Http\Requests;
+use Auth;
 use Illuminate\Http\Request;
 
 class IndexController extends MainAdminController
@@ -39,7 +39,7 @@ class IndexController extends MainAdminController
 
 		 
 		
-         if (Auth::attempt($credentials, $request->has('remember'))) {
+         if (Auth::attempt($credentials, $request->filled('remember'))) {
 
             if(Auth::user()->usertype=='banned'){
                 \Auth::logout();
@@ -50,7 +50,7 @@ class IndexController extends MainAdminController
         }
 
        // return array("errors" => 'The email or the password is invalid. Please try again.');
-        //return redirect('/admin');
+        //return redirect('/admin');       
        return redirect('/admin')->withErrors('The email or the password is invalid. Please try again.');
         
     }
@@ -82,7 +82,7 @@ class IndexController extends MainAdminController
     {
         Auth::logout();
 
-        return redirect('admin/');
+        return redirect('/login');
     }
     	
 }

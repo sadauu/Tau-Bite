@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
-use App\Restaurants;
-use App\Categories;
-use App\Menu;
-use App\Order;
-use App\Types;
-use App\Review;
-use Carbon\Carbon;
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\Restaurants;
+use App\Models\Review;
+use App\Models\Types;
+use App\Models\User;
+use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Session;
-use Intervention\Image\Facades\Image; 
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image; 
+use Session;
 
 class UsersController extends MainAdminController
 {
@@ -58,7 +58,7 @@ class UsersController extends MainAdminController
     public function addnew(Request $request)
     { 
     	
-    	$data =  \Input::except(array('_token')) ;
+    	$data =  $request->except(array('_token')) ;
 	    
 	    $inputs = $request->all();
 	    

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
-use App\Categories;
-use App\Restaurants;
-
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Restaurants;
+use App\Models\User;
+
+use Auth;
 use Illuminate\Http\Request;
-use Session;
 use Intervention\Image\Facades\Image; 
+use Session;
 
 
 class CategoriesController extends MainAdminController
@@ -58,7 +58,7 @@ class CategoriesController extends MainAdminController
     public function addnew(Request $request)
     { 
     	
-    	$data =  \Input::except(array('_token')) ;
+    	$data =  $request->except(array('_token')) ;
 	    
 	    $rule=array(
 		        'category_name' => 'required'		         

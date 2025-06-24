@@ -29,7 +29,9 @@
    
    	<div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/types/addtype'),'class'=>'form-horizontal padding-15','name'=>'type_form','id'=>'type_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
+                <form action="{{ url('admin/types/addtype') }}" method="POST" class="form-horizontal padding-15" name='type_form' id="type_form" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                 <input type="hidden" name="id" value="{{ isset($type->id) ? $type->id : null }}">
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Restaurant Type</label>
@@ -63,8 +65,7 @@
                          
                     </div>
                 </div>
-                
-                {!! Form::close() !!} 
+            </form>
             </div>
         </div>
    

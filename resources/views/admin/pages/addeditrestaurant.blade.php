@@ -28,7 +28,9 @@
    
    	<div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/restaurants/addrestaurant'),'class'=>'form-horizontal padding-15','name'=>'category_form','id'=>'category_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
+                <form action="{{ url('admin/restaurants/addrestaurant') }}" method="POST" class="form-horizontal padding-15" id="category_form" name="category_form" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
                 <input type="hidden" name="id" value="{{ isset($restaurant->id) ? $restaurant->id : null }}">
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Cafeteria Type</label>
@@ -144,7 +146,7 @@
                     </div>
                 </div>
                 
-                {!! Form::close() !!} 
+                </form> 
             </div>
         </div>
    

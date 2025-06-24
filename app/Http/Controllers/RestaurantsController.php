@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\User;
-use App\Restaurants;
-use App\Categories;
-use App\Menu;
-use App\Types;
-use App\Review;
-
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Menu;
+use App\Models\Restaurants;
+use App\Models\Review;
+use App\Models\Types;
+use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
-use Session;
-use Intervention\Image\Facades\Image; 
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image; 
+use Session;
 
 class RestaurantsController extends Controller
 {

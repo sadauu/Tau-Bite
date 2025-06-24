@@ -1,7 +1,7 @@
 <?php
-use App\Settings;
-use App\Widgets;
-use App\Types;
+use App\Models\Settings;
+use App\Models\Widgets;
+use App\Models\Types;
 
  
 if (! function_exists('getcong')) {

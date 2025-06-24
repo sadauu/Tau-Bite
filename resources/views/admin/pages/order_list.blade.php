@@ -1,11 +1,21 @@
 @extends("admin.admin_app")
 
+
+
 @section("content")
 <div id="main">
 	<div class="page-header">
 		
 		
-		<h2>Order List</h2>
+		<h2>Order Lists</h2>
+
+        @foreach($ordersByAddress as $group)
+    <p>{{ $group->address }}: {{ $group->total_orders }} orders</p>
+@endforeach
+
+@foreach($ordersByCampus as $group)
+    <p>{{ $group->campus }}: {{ $group->total_orders }} orders</p>
+@endforeach
         <a href="{{ URL::to('admin/restaurants/view/'.$restaurant_id) }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back Restaurant</a>
 	</div>
 	@if(Session::has('flash_message'))
@@ -40,13 +50,13 @@
             @foreach($order_list as $i => $order)
             <tr>
                 <td>{{ date('m-d-Y',$order->created_date)}}</td>
-                <td>{{ \App\User::getUserFullname($order->user_id) }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->mobile }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->email }}</td>
-                <td>{{ \App\User::getUserInfo($order->user_id)->address }}</td>
+                <td>{{ \App\Models\User::getUserFullname($order->user_id) }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->mobile }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->email }}</td>
+                <td>{{ \App\Models\User::getUserInfo($order->user_id)->address }}</td>
                 <td>{{ $order->item_name }}</td>
                 <td>{{ $order->quantity }}</td>
-                <td>{{getcong('currency_symbol')}}{{ \App\Menu::getMenunfo($order->item_id)->price }}</td>
+                <td>{{getcong('currency_symbol')}}{{ \App\Models\Menu::getMenunfo($order->item_id)->price }}</td>
                 <td>{{getcong('currency_symbol')}}{{ $order->item_price }}</td>
                 <td>{{ $order->status }}</td>
                 <td class="text-center">

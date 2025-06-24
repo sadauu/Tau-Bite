@@ -62,8 +62,8 @@
 
             <!-- <li><a href="{{ URL::to('about') }}">About us</a></li> -->
             <li><a href="{{ URL::to('contact') }}">Contact</a></li>    
-            <li><h3>Your Balance: ₦{{ auth()->user()->wallet->balance ?? '0.00' }}</h3>
-            </li>          
+            {{-- <li><h3>Your Balance: ₦{{ auth()->user()->wallet->balance ?? '0.00' }}</h3>
+            </li>           --}}
           </ul>
        
        

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\User;
-use App\Types;
+use App\Models\User;
+use App\Models\Types;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Session;
@@ -52,7 +52,7 @@ class TypesController extends MainAdminController
     public function addnew(Request $request)
     { 
     	
-    	$data =  \Input::except(array('_token')) ;
+    	$data =  $request->except(array('_token')) ;
 	    
 	    $rule=array(
 		        'type' => 'required'		         

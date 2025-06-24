@@ -14,9 +14,10 @@
           <div id="order_process" class="box_style_2">
             <h2 class="inner">Login</h2>
              
-              {!! Form::open(array('url' => 'login','class'=>'','id'=>'login','role'=>'form')) !!} 
+              <form action="{{url('login')}}" class="" id="login" method="POST">
               <div class="message">
-                         
+                         @csrf
+                         @method("POST")
                       @if (count($errors) > 0)
                           <div class="alert alert-danger">
                           
@@ -47,7 +48,7 @@
                 <input type="password" placeholder="Password" class="form-control" value="" name="password" id="password">
               </div>
               <button class="btn btn-submit" type="submit">Login</button>
-            {!! Form::close() !!} 
+            </form>
           </div>
         </div>
         <div class="col-md-3"> </div>

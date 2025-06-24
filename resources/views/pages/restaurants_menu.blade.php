@@ -27,7 +27,7 @@
                 @endif
                
                 @endfor 
-                (<small><a href="{{URL::to('restaurants/'.$restaurant->restaurant_slug)}}"> Read {{\App\Review::getTotalReview($restaurant->id)}} Reviews </a></small>)
+                (<small><a href="{{URL::to('restaurants/'.$restaurant->restaurant_slug)}}"> Read {{\App\Models\Review::getTotalReview($restaurant->id)}} Reviews </a></small>)
       </div>
       <div class="rstl_list_btn"><a href="{{URL::to('restaurants/'.$restaurant->restaurant_slug)}}">View Restaurant</a></div>
       </div>
@@ -42,7 +42,7 @@
         <div class="col-md-9 col-sm-7 col-xs-12">         
       <div id="main_menu" class="box_style_2">
         <h2 class="inner">Menu List</h2>
-         @foreach(\App\Categories::where('restaurant_id',$restaurant->id)->orderBy('category_name')->get() as $n=>$cat)
+         @foreach(\App\Models\Categories::where('restaurant_id',$restaurant->id)->orderBy('category_name')->get() as $n=>$cat)
         <h3 id="{{$cat->category_name}}" class="nomargin_top">{{$cat->category_name}}</h3>
         <table class="table table-striped cart-list">
           <thead>
@@ -53,7 +53,7 @@
           </tr>
           </thead>
           <tbody>
-            @foreach(\App\Menu::where('menu_cat',$cat->id)->orderBy('menu_name')->get() as $menu_item)
+            @foreach(\App\Models\Menu::where('menu_cat',$cat->id)->orderBy('menu_name')->get() as $menu_item)
           <tr>
             <td>
 

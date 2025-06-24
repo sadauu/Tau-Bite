@@ -27,7 +27,7 @@
             <h4>Summary</h4>
             <table class="table table-striped nomargin">
               <tbody>
-                @foreach(\App\Cart::where('user_id',Auth::id())->orderBy('id')->get() as $n=>$order_item)
+                @foreach(\App\Models\Cart::where('user_id',Auth::id())->orderBy('id')->get() as $n=>$order_item)
                 <tr>
                     <td><strong>{{$order_item->quantity}}x</strong> {{$order_item->item_name}} </td>
                     <td><strong class="pull-right">{{getcong('currency_symbol')}}{{$order_item->item_price}}</strong></td>
@@ -46,7 +46,7 @@
               </tbody>
             </table>
             <a href="{{URL::to('myorder')}}" class="btn btn-submit">My Order</a> 
-            <div style="display:none;">{{\App\Cart::where('user_id', Auth::id())->delete()}}</div>
+            <div style="display:none;">{{\App\Models\Cart::where('user_id', Auth::id())->delete()}}</div>
           </div>
         </div>
         <div class="col-md-3"> </div>

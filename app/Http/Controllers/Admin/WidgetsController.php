@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Auth;
-use App\User;
-use App\Widgets;
+use App\Models\User;
+use App\Models\Widgets;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Session;
@@ -38,7 +38,7 @@ class WidgetsController extends MainAdminController
     	$widgets = Widgets::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	     
 
 	    $inputs = $request->all();
@@ -70,7 +70,7 @@ class WidgetsController extends MainAdminController
     	$widgets = Widgets::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	     
 
 	    $inputs = $request->all();
@@ -94,7 +94,7 @@ class WidgetsController extends MainAdminController
     	$widgets = Widgets::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	     
 
 	    $inputs = $request->all();
@@ -122,7 +122,7 @@ class WidgetsController extends MainAdminController
     	$widgets = Widgets::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	     
 
 	    $inputs = $request->all();
@@ -149,7 +149,7 @@ class WidgetsController extends MainAdminController
     	$widgets = Widgets::findOrFail('1');
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	     
 
 	    $inputs = $request->all();

@@ -20,10 +20,19 @@
         <div class="col-md-9 col-sm-7 col-xs-12">
           <div class="box_style_2" id="order_process">
           <h2 class="inner">Your Order Details</h2>
-          {!! Form::open(array('url' => 'order_details','class'=>'','id'=>'order_details','role'=>'form')) !!} 
-
+          
+          <form action="{{ url('order_details') }}" method="POST" class="" id="order_details">
+            @csrf
+            @method('POST')
             <div class="message">
-                  <!-- {!! Html::ul($errors->all(), array('class'=>'alert alert-danger errors')) !!} -->
+              @if ($errors->any())
+              <ul class="alert alert-danger errors">
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          @endif
+          
                     @if (count($errors) > 0)
                           <div class="alert alert-danger">
                             <ul>
@@ -71,30 +80,29 @@
           <div class="form-group">
             <label for="campus">Campus/Hostel</label>
             <select id="campus" name="campus" class="form-control">
-              <option value="">-- Select Campus/Hostel --</option>
-              <option value="East Campus" {{ old('campus', $user->campus) == 'East Campus' ? 'selected' : '' }}>East Campus</option>
-              <option value="West Hostel" {{ old('campus', $user->campus) == 'West Hostel' ? 'selected' : '' }}>West Hostel</option>
+                <option value="">-- Select Campus/Hostel --</option>
+                <option value="East Campus" {{ old('campus', $user->campus) == 'East Campus' ? 'selected' : '' }}>East Campus</option>
+                <option value="West Hostel" {{ old('campus', $user->campus) == 'West Hostel' ? 'selected' : '' }}>West Hostel</option>
+                <option value="Oko Community" {{ old('oko', $user->campus) == 'Oko Community' ? 'selected' : '' }}>Oko Community</option>
             </select>
-
             @if ($errors->has('campus'))
-              <small class="text-danger">{{ $errors->first('campus') }}</small>
+                <small class="text-danger">{{ $errors->first('campus') }}</small>
             @endif
-
-          </div>
-
-          <!-- <div class="form-group">
-              <label>Postal code</label>
-              <input type="text" id="postal_code" name="postal_code" value="{{$user->postal_code}}" class="form-control" placeholder=" Your postal code">
-            </div> -->
-      
-           
-          <hr>
-          <div class="row">
-            <div class="col-md-12">
-              <label>Your full address</label>
-              <textarea class="form-control" style="height:100px" placeholder="Address" name="address" id="address">{{$user->address}}</textarea>
-            </div>
-          </div>
+        </div>
+        
+        <hr>
+        
+        <div class="form-group">
+            <label for="address_option">Delivery Point</label>
+            <select class="form-control" name="address" id="address_option">
+                <option value="">-- Select Address --</option>
+                {{-- Options will be populated by JS --}}
+            </select>
+            @if ($errors->has('address'))
+                <small class="text-danger">{{ $errors->first('address') }}</small>
+            @endif
+        </div>
+        
              
       
         </div>
@@ -106,7 +114,7 @@
           
           <table class="table table_summary">
             <tbody>
-              @foreach(\App\Cart::where('user_id',Auth::id())->orderBy('id')->get() as $n=>$cart_item)
+              @foreach(\App\Models\Cart::where('user_id',Auth::id())->orderBy('id')->get() as $n=>$cart_item)
               <tr>
                 <td><a href="{{URL::to('delete_item/'.$cart_item->id)}}" class="remove_item"><i class="fa fa-minus-circle"></i></a> <strong>{{$cart_item->quantity}}x</strong> {{$cart_item->item_name}} </td>
                 <td><strong class="pull-right">{{getcong('currency_symbol')}}{{$cart_item->item_price}}</strong></td>
@@ -131,12 +139,14 @@
             </tbody>
           </table>
           <hr>
-          <form method="POST" action="{{ url('/pay') }}">
+          <form method="GET" action="{{ url('/pay') }}">
     <button type="submit" class="btn_full">Confirm Your Order</button>
 </form>
+
+
         </div>
 
-          {!! Form::close() !!} 
+          </form> 
           @else
             <a class="btn_full" href="#">Empty Cart</a> </div>
           @endif
@@ -153,4 +163,60 @@
   </div>
  
 
-@endsection
+  
+  @endsection
+  
+  @push('scripts')
+  <script>
+      const addressOptions = {
+          "East Campus": [
+              "Capeferia",
+              "Rev James Abolarin Hostel Male",
+              "Rev James Abolarin Hostel Females",
+              "Faculty ICT",
+              "Faculty Bookstore",
+              "Clinic",
+              "Gate",
+              "Staff Quarter",
+              "Works"
+          ],
+          "West Hostel": [
+              "Capeteria",
+              "Faculty of Management",
+              "Pool",
+              "Field",
+              "Chartet",
+              "Law Faculty Gate",
+              "Taico Gate"
+          ],
+  
+          "Oko Community": [
+            "OMC"
+          ]
+      };
+  
+      function populateAddressOptions() {
+          const campus = document.getElementById('campus').value;
+          const addressSelect = document.getElementById('address_option');
+          addressSelect.innerHTML = '<option value="">-- Select Address --</option>';
+          if (addressOptions[campus]) {
+              addressOptions[campus].forEach(function(addr) {
+                  addressSelect.innerHTML += `<option value="${addr}">${addr}</option>`;
+              });
+          }
+      }
+  
+      document.getElementById('campus').addEventListener('change', populateAddressOptions);
+  
+      // Optionally, populate on page load if campus is pre-selected
+      document.addEventListener('DOMContentLoaded', function() {
+          populateAddressOptions();
+          // Optionally, set the selected address if editing
+          @if(old('address', $user->address))
+              document.getElementById('address_option').value = "{{ old('address', $user->address) }}";
+          @endif
+      });
+  </script>
+  @endpush
+
+

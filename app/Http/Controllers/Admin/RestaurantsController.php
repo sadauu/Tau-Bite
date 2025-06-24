@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
-use App\Restaurants;
-use App\Categories;
-use App\Menu;
-use App\Order;
-use App\Types;
-use App\Review;
-
 use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Menu;
+use App\Models\Order;
+use App\Models\Restaurants;
+use App\Models\Review;
+use App\Models\Types;
+use App\Models\User;
+
+use Auth;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image; 
+use Session;
 
 
 class RestaurantsController extends MainAdminController
@@ -61,7 +62,7 @@ class RestaurantsController extends MainAdminController
     public function addnew(Request $request)
     { 
     	
-    	$data =  \Input::except(array('_token')) ;
+    	$data =  $request->except(array('_token')) ;
 	    
 	    $rule=array(
 		        'restaurant_type' => 'required',
@@ -93,11 +94,11 @@ class RestaurantsController extends MainAdminController
 
         if($inputs['restaurant_slug']=="")
         {
-            $restaurant_slug = str_slug($inputs['restaurant_name'], "-");
+            $restaurant_slug = Str::slug($inputs['restaurant_name'], "-");
         }
         else
         {
-            $restaurant_slug =str_slug($inputs['restaurant_slug'], "-"); 
+            $restaurant_slug =Str::slug($inputs['restaurant_slug'], "-"); 
         }
 
         //Logo image

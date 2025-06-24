@@ -20,8 +20,9 @@
     <div class="contact-form">
       <div class="col-sm-6">                
          
-         {!! Form::open(array('url' => 'contact_send','class'=>'','id'=>'contact_form','role'=>'form')) !!} 
-          
+         <form action="{{url('contact_send')}}" class="" id="contact_form" method="POST">
+          @csrf
+          @method('POST')
           <div class="message">
                          
                       @if (count($errors) > 0)
@@ -77,7 +78,7 @@
               <button type="submit" value="submit" class="btn font-montserrat" id="btn_submit" onClick="proceed();">Submit</button>
             </li>
           </ul>
-        {!! Form::close() !!}
+        </form>
       </div>
     <div class="col-sm-6">
       <h5>Contact Info</h5>          

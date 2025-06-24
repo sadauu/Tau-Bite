@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use App\User;
 use App\Http\Requests;
+use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
-use Session;
-use Intervention\Image\Facades\Image; 
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
+ 
+use Intervention\Image\Laravel\Facades\Image;
 
 class AdminController extends MainAdminController
 {
@@ -32,7 +34,7 @@ class AdminController extends MainAdminController
     	$user = User::findOrFail(Auth::user()->id);
  
 	    
-	    $data =  \Input::except(array('_token')) ;
+	    $data =  $request->except(array('_token')) ;
 	    
 	    $rule=array(
 		        'first_name' => 'required',
@@ -56,7 +58,7 @@ class AdminController extends MainAdminController
 		/*if($icon){
             
 			
-			 $filename  = str_slug($inputs['name'], '-').'-'.time().'.'.$icon->getClientOriginalExtension();
+			 $filename  = Str::slug($inputs['name'], '-').'-'.time().'.'.$icon->getClientOriginalExtension();
 
              $path = public_path('upload/members/');
  			
@@ -71,12 +73,12 @@ class AdminController extends MainAdminController
         if($icon){
             $tmpFilePath = 'upload/members/';
 
-            $hardPath =  str_slug($inputs['first_name'], '-').'-'.md5(time());
+            $hardPath =  Str::slug($inputs['first_name'], '-').'-'.md5(time());
 
-            $img = Image::make($icon);
+            $img = Image::read($icon);
 
-            $img->fit(200, 200)->save($tmpFilePath.$hardPath.'-b.jpg');
-            $img->fit(80, 80)->save($tmpFilePath.$hardPath. '-s.jpg');
+            $img->resize(200, 200)->save($tmpFilePath.$hardPath.'-b.jpg');
+            $img->resize(80, 80)->save($tmpFilePath.$hardPath. '-s.jpg');
 
             $user->image_icon = $hardPath;
         }
@@ -103,7 +105,7 @@ class AdminController extends MainAdminController
     		//$user = User::findOrFail(Auth::user()->id);
 		
 		
-		    $data =  \Input::except(array('_token')) ;
+		    $data =  $request->except(array('_token')) ;
             $rule  =  array(
                     'password'       => 'required|confirmed',
                     'password_confirmation'       => 'required'

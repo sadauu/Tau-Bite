@@ -42,9 +42,10 @@
 
     <!-- Tab panes -->
     <div class="tab-content tab-content-default">
-        <div role="tabpanel" class="tab-pane active" id="account">             
-            {!! Form::open(array('url' => 'admin/settings','class'=>'form-horizontal padding-15','name'=>'account_form','id'=>'account_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                
+        <div role="tabpanel" class="tab-pane active" id="account">
+            <form action="{{ url('admin/settings') }}" method="POST" class="form-horizontal padding-15" id="account_form" name="account_form" enctype='multipart/form-data'>
+                @csrf
+                @method('POST')
                 
                 <div class="form-group">
                     <label for="avatar" class="col-sm-3 control-label">Logo</label>
@@ -122,11 +123,13 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
         
         <div role="tabpanel" class="tab-pane" id="homepage_settings">             
-            {!! Form::open(array('url' => 'admin/homepage_settings','class'=>'form-horizontal padding-15','name'=>'layout_settings_form','id'=>'layout_settings_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+            <form action="{{ url('admin/homepage_settings') }}" method="POST" class="form-horizontal padding-15" name="layout_settings_form" id="layout_settings_form" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
                 
                 <div class="form-group">
                     <label for="avatar" class="col-sm-3 control-label">Home Slide 1</label>
@@ -233,12 +236,13 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
         
         <div role="tabpanel" class="tab-pane" id="other_Settings">
-            
-            {!! Form::open(array('url' => 'admin/headfootupdate','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
+            <form action="{{ url('admin/headfootupdate') }}" method="POST" class="form-horizontal padding-15" name='pass_form' id='pass_form'>
+                @csrf
+                @method('POST')
                 
                  
                 <div class="form-group">
@@ -261,7 +265,7 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form> 
         </div>
          
     </div>

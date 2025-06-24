@@ -38,9 +38,10 @@
 
     <!-- Tab panes -->
     <div class="tab-content tab-content-default">
-        <div role="tabpanel" class="tab-pane active" id="account">             
-            {!! Form::open(array('url' => 'admin/profile','class'=>'form-horizontal padding-15','name'=>'account_form','id'=>'account_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                
+        <div role="tabpanel" class="tab-pane active" id="account">       
+            <form action="{{ url('admin/profile') }}" method="POST" class="form-horizontal padding-15" id="account_form" name="account_form" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
                 <div class="form-group">
                     <label for="avatar" class="col-sm-3 control-label">Profile Picture</label>
                     <div class="col-sm-9">
@@ -94,13 +95,13 @@
                          
                     </div>
                 </div>
-
-            {!! Form::close() !!} 
+            </form>
         </div>
         <div role="tabpanel" class="tab-pane" id="ac_password">
             
-            {!! Form::open(array('url' => 'admin/profile_pass','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
-                
+            <form action="{{ url('admin/profile_pass') }}" method="POST" name="pass_form" class="form-horizontal padding-15" id="pass_form">
+                @csrf
+                @method('POST')
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">New Password</label>
                     <div class="col-sm-9">
@@ -121,7 +122,8 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            </form>
+
         </div>
          
     </div>

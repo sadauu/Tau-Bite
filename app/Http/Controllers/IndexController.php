@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\User;
-use App\Restaurants;
-use App\Categories;
-use App\Menu;
-use App\Types;
-use App\Review;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Models\Categories;
+use App\Models\Menu;
+use App\Models\Restaurants;
+use App\Models\Review;
+use App\Models\Types;
+use App\Models\User;
+
+use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -21,9 +21,9 @@ class IndexController extends Controller
 
     public function index()
     { 
-    	if(!$this->alreadyInstalled()) {
-            return redirect('install');
-        }
+    	// if($this->alreadyInstalled()) {
+        //     return redirect('install');
+        // }
     	 
          $types=Types::orderBy('type')->get();  
 
@@ -34,10 +34,38 @@ class IndexController extends Controller
                            ->orderBy('restaurants.review_avg', 'desc')
                            ->take(6)
                            ->get();
+
+                           $popularItems = DB::table('restaurant_order')
+        ->join('restaurants', 'restaurant_order.restaurant_id', '=', 'restaurants.id')
+        ->join('restaurant_types', 'restaurants.restaurant_type', '=', 'restaurant_types.id')
+        ->select(
+            'restaurant_order.item_name',
+            'restaurants.restaurant_name',
+            'restaurants.restaurant_slug',
+            'restaurants.restaurant_logo',
+            'restaurants.restaurant_address',
+            'restaurant_types.type',
+            'restaurants.review_avg',
+            DB::raw('COUNT(*) as total')
+        )
+        ->groupBy(
+            'restaurant_order.item_name',
+            'restaurants.restaurant_name',
+            'restaurants.restaurant_slug',
+            'restaurants.restaurant_logo',
+            'restaurants.restaurant_address',
+            'restaurant_types.type',
+            'restaurants.review_avg'
+
+        )
+        ->orderByDesc('total')
+        ->take(5)
+        ->get();
+
         
           
 
-        return view('pages.index',compact('restaurants','types'));
+        return view('pages.index',compact('restaurants','types', 'popularItems'));
     }
     
     public function about_us()
@@ -145,7 +173,7 @@ class IndexController extends Controller
     public function register_user(Request $request)
     { 
         
-        $data =  \Input::except(array('_token')) ;
+        $data =  $request->except(array('_token')) ;
         
         $inputs = $request->all();
         
@@ -182,7 +210,7 @@ class IndexController extends Controller
 
             \Session::flash('flash_message', 'Register successfully...');
 
-            return \Redirect::back();
+            return redirect()->route('login')->with('flash_message', 'Register succcessfully... Kindly Login');
 
          
     }    
@@ -199,7 +227,7 @@ class IndexController extends Controller
     public function editprofile(Request $request)
     { 
         
-        $data =  \Input::except(array('_token')) ;
+        $data =  $request->except(array('_token')) ;
         
         $inputs = $request->all();
         
@@ -257,7 +285,7 @@ class IndexController extends Controller
      public function edit_password(Request $request)
     { 
         
-        $data =  \Input::except(array('_token')) ;
+        $data =  $request->except(array('_token')) ;
         
         $inputs = $request->all();
         
@@ -295,7 +323,7 @@ class IndexController extends Controller
     public function contact_send(Request $request)
     { 
         
-        $data =  \Input::except(array('_token')) ;
+        $data =  $request->except(array('_token')) ;
         
         $inputs = $request->all();
         

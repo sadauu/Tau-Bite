@@ -17,10 +17,18 @@
     <div class="col-md-6">
         <div class="box_style_2" id="order_process">
           <h2 class="inner">Change Password</h2>
-          {!! Form::open(array('url' => 'change_pass','class'=>'','id'=>'myProfile','role'=>'form')) !!} 
-
+          <form action="{{ url('change_pass') }}" method="POST" class="" id="myProfile">
+            @csrf
+            @method('POST')
             <div class="message">
-                        <!--{!! Html::ul($errors->all(), array('class'=>'alert alert-danger errors')) !!}-->
+                        @if ($errors->any())
+    <ul class="alert alert-danger errors">
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
                                     @if (count($errors) > 0)
                           <div class="alert alert-danger">
                           
@@ -57,7 +65,7 @@
           <hr>
            
             <button type="submit" class="btn btn-submit">Update</button>
-      {!! Form::close() !!} 
+      </form> 
         </div>
         <!-- End box_style_1 --> 
       </div>

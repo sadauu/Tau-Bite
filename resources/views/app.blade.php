@@ -64,5 +64,6 @@
 <script src="{{ URL::asset('site_assets/js/nav_menu.js') }}"></script>
 <script src="{{ URL::asset('site_assets/js/functions.js') }}"></script> 
 </div>
+@stack('scripts') 
 </body>
 </html>
