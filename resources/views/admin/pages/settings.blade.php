@@ -34,9 +34,9 @@
             <a href="#homepage_settings" aria-controls="homepage_settings" role="tab" data-toggle="tab">Home Page Settings</a>
         </li>
        
-        <li role="presentation">
+        <!-- <li role="presentation">
             <a href="#other_Settings" aria-controls="other_Settings" role="tab" data-toggle="tab">Other Settings</a>
-        </li>        
+        </li>         -->
          
     </ul>
 
@@ -208,7 +208,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Total Cafeteria/Spots</label>
                     <div class="col-sm-9">
                         <input type="text" name="total_restaurant" value="{{ $settings->total_restaurant }}" class="form-control" value="">
@@ -225,7 +225,7 @@
                     <div class="col-sm-9">
                         <input type="text" name="total_registered_users" value="{{ $settings->total_registered_users }}" class="form-control" value="">
                     </div>
-                </div>
+                </div> -->
 
                  
                 <hr>
@@ -239,7 +239,7 @@
             </form> 
         </div>
         
-        <div role="tabpanel" class="tab-pane" id="other_Settings">
+        <!-- <div role="tabpanel" class="tab-pane" id="other_Settings">
             <form action="{{ url('admin/headfootupdate') }}" method="POST" class="form-horizontal padding-15" name='pass_form' id='pass_form'>
                 @csrf
                 @method('POST')
@@ -266,7 +266,7 @@
                 </div>
 
             </form> 
-        </div>
+        </div> -->
          
     </div>
 </div>
