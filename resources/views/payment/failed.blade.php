@@ -1,7 +1,8 @@
 @extends('app')
 @section('head_title', 'Payment Failed | ' . getcong('site_name'))
 @section('content')
-<div class="container vh-100 d-flex justify-content-center align-items-center">
+<br>
+<div class="container vh-100 d-flex justify-content-center align-items-center ">
     <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
         <div class="text-center mb-4">
             <svg width="64" height="64" fill="none" viewBox="0 0 24 24">
@@ -16,5 +17,5 @@
         </div>
     </div>
 </div>
-
+<br>
 @endsection

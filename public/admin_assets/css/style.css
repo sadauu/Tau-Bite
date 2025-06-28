@@ -14159,10 +14159,10 @@ blockquote {
   margin-left: 2px;
 }
 .btn-default-light {
-  color: #757575;
-  background-color: #eeeeee;
+  color: #cf0606;
+  background-color: #cf0606;
   color: #ffffff;
-  background-color: #bdbdbd;
+  background-color: #cf0606;
 }
 .btn-default-light:hover,
 .btn-default-light:focus,

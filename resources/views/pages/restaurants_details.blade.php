@@ -40,10 +40,10 @@
  
 
 <div class="restaurant_list_detail">
-    <div class="container">
-      <div class="row"> 
-        <div class="col-md-9 col-sm-7 col-xs-12">         
-      <div class="box_style_2">
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-9 col-sm-7 col-xs-12">         
+        <div class="box_style_2">
               <h2 class="inner">Description</h2>
               <span class="detail_con_text">{!!$restaurant->restaurant_description!!}</span>
               <div id="summary_review">
@@ -126,8 +126,7 @@
               
                  @if(Auth::check() and \App\Models\Review::checkUserReview(Auth::id(),$restaurant->id)=='')
             
-              <a href="#" class="btn_1 add_bottom_15" data-toggle="modal" data-target="#myReview">
-            Leave a review</a>
+              <a href="#" class="btn_1 add_bottom_15" data-toggle="modal" data-target="#myReview">Leave a review</a>
             
             @elseif(\App\Models\Review::checkUserReview(Auth::id(),$restaurant->id)!='')
 
@@ -136,12 +135,11 @@
 
             @else
 
-               <a href="{{ URL::to('login')}}" class="btn_1 add_bottom_15">
-            Leave a review</a> 
+               <a href="{{ URL::to('login')}}" class="btn_1 add_bottom_15">Leave a review</a> 
             @endif
 
                 
-              </div>
+        </div>
                @foreach($reviews as $i => $review)
         <div class="review_strip_single"> <img src="{{ URL::asset('site_assets/img/male-icon.png') }}" alt="" class="img-circle"> <small> - {{date('d F Y',$review->date)}} -</small>
           <h4>{{ \App\Models\User::getUserFullname($review->user_id) }} </h4>
@@ -211,27 +209,27 @@
       
       @include('_particles.pagination', ['paginator' => $reviews]) 
         
-            </div>
-           </div>
+    </div>
+  </div>
         <div class="col-md-3 col-sm-5 col-xs-12 side-bar">   
-    <div class="box_style_2 sidebar_time_list">
-          <h4 class="nomargin_top">Opening time <i class="fa fa-clock-o pull-right"></i></h4>
-          <ul class="opening_list">
-            <li>Monday<span>{{$restaurant->open_monday}}</span></li>
-            <li>Tuesday<span>{{$restaurant->open_tuesday}}</span></li>
-            <li>Wednesday <span>{{$restaurant->open_wednesday}}</span></li>
-            <li>Thursday<span>{{$restaurant->open_thursday}}</span></li>
-            <li>Friday<span>{{$restaurant->open_friday}}</span></li>
-            <li>Saturday<span>{{$restaurant->open_saturday}}</span></li>
-            <li>Sunday <span>{{$restaurant->open_sunday}}</span></li>
-          </ul>
-        </div>                                                                  
-           
-     <div id="help" class="box_style_2"> 
-      <i class="fa fa-life-bouy"></i>
-        <h4>{{getcong_widgets('need_help_title')}}</h4>
-        <a href="tel://{{getcong_widgets('need_help_phone')}}" class="phone">{{getcong_widgets('need_help_phone')}}</a> <small>{{getcong_widgets('need_help_time')}}</small> 
-      </div>
+          <div class="box_style_2 sidebar_time_list">
+            <h4 class="nomargin_top">Opening time <i class="fa fa-clock-o pull-right"></i></h4>
+            <ul class="opening_list">
+              <li>Monday<span>{{$restaurant->open_monday}}</span></li>
+              <li>Tuesday<span>{{$restaurant->open_tuesday}}</span></li>
+              <li>Wednesday <span>{{$restaurant->open_wednesday}}</span></li>
+              <li>Thursday<span>{{$restaurant->open_thursday}}</span></li>
+              <li>Friday<span>{{$restaurant->open_friday}}</span></li>
+              <li>Saturday<span>{{$restaurant->open_saturday}}</span></li>
+              <li>Sunday <span>{{$restaurant->open_sunday}}</span></li>
+            </ul>
+          </div>                                                                  
+            
+          <div id="help" class="box_style_2"> 
+            <i class="fa fa-life-bouy"></i>
+            <h4>{{getcong_widgets('need_help_title')}}</h4>
+            <a href="tel://{{getcong_widgets('need_help_phone')}}" class="phone">{{getcong_widgets('need_help_phone')}}</a> <small>{{getcong_widgets('need_help_time')}}</small> 
+          </div>
         </div>
       </div>
     </div>
@@ -243,7 +241,7 @@
   <div class="modal-dialog">
     <div class="modal-content modal-popup"> <a href="#" class="close-link"><i class="fa fa-times-circle-o"></i></a>
       
-        <form action="{{ url('restaurants/'.$restaurant->restaurant_slug.'/restaurant_review') }}" method="POST" class="popup-form" id="review" name='review'>
+      <form action="{{ url('restaurants/'.$restaurant->restaurant_slug.'/restaurant_review') }}" method="POST" class="popup-form" id="review" name='review'>
           @csrf
           @method('POST')
         <div class="login_icon"><i class="fa fa-comments-o"></i></div>

@@ -140,7 +140,7 @@ header nav{display:inline-block;width:auto;float:right;position:relative;z-index
 .modalDialog > div > img{width:100%;height:auto;border-radius:10px;}
 .close{background: #606061;color: #FFFFFF;line-height: 25px;position: absolute;right: 8px;text-align: center;top: 6px;width: 26px;height:26px;text-decoration: none;font-weight: bold;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius:20px;	opacity:1;}
 .close:hover{background:#53A633;}
-#confirm i {color: #50a42f;display:block;text-align:center;font-size: 120px;}
+#confirm i {color: #2613a5;display:block;text-align:center;font-size: 120px;}
 #confirm h3{color:#333;font-size:24px;margin-bottom: 20px;margin-top: 10px;text-transform:none;text-align:center;}
 .white_for_login .table-striped td strong{text-align:left;display:inline-block}
 .white_for_login .table td.total_confirm {background-color: #666;color: #fff;}
@@ -175,18 +175,18 @@ a.remove_item:hover {color: #c33;}
 .recent-come .rating i {color: #fc0;font-size: 16px;}
 #cart_box .btn_full:hover, #cart_box a.btn_full:hover {background: #fff;border: 2px solid#2fa4a2;color: #2613a5;}
 .btn_full, a.btn_full {background: #85c99d;border: medium none;border-radius: 3px;display: block;font-weight: 500;margin-bottom: 5px;padding: 10px;transition: all 0.3s ease 0s;width: 100%;}
-#help.box_style_2 i {color:#50a42f;display: inline-block;font-size: 52px;}
-#help.box_style_2 a.phone {color: #50a42f;display: block;font-size: 26px;margin-bottom: 0;}
+#help.box_style_2 i {color:#2fa4a2;display: inline-block;font-size: 52px;}
+#help.box_style_2 a.phone {color: #2fa4a2;display: block;font-size: 26px;margin-bottom: 0;}
 #confirm, #pass-info, #sub_content, #sub_content #thumb, #help.box_style_2, .feature i, .features-img, .marker_info, .modal-popup, .parallax-content, .parallax-content-2 > div, .sk-spinner-wave.sk-spinner, .strip_list.grid .desc, .tooltip-content, a.bt_filters, a.load_more_bt{text-align:center}
 #main_menu.box_style_2, .box_style_2.info {padding-bottom: 10px;}
-.box_style_2 h2.inner {background-color: #50a42f;border-top-left-radius: 3px;border-top-right-radius: 3px;color: #fff;font-size: 22px;font-weight: 600;margin: -25px -25px 25px;padding: 12px 15px;}
+.box_style_2 h2.inner {background-color: #2613a5;border-top-left-radius: 3px;border-top-right-radius: 3px;color: #fff;font-size: 22px;font-weight: 600;margin: -25px -25px 25px;padding: 12px 15px;}
 #main_menu h3 {color: #50a42f;font-size: 20px;font-weight: 600;text-transform:uppercase;}
 .table.cart-list {margin-bottom: 0;}
 .table.cart-list td h5 {font-weight: 600;font-size:15px;margin-bottom: 5px;text-transform:none;}
 .table.cart-list td p{font-size:14px;}
 .options i {font-size: 29px;display:block;}
 .table-striped td strong{text-align:center;display:block;}
-.feature h3 span, a {color: #50a42f;text-align:center;	}
+.feature h3 span, a {color: #2fa4a2;text-align:center;	}
 .feature h3 span, a:hover {color: #666;}
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{border-right: 1px solid #ddd;border-top: 1px solid #ddd;line-height: 1.42857;padding: 8px;vertical-align: top;font-size:13px}
 .table > tbody > tr > td:last-child{border-right:0px;}
@@ -245,7 +245,7 @@ a.strip_list {color: #555;}
 .sub_cont_lt{font-size:16px;color:#fff;text-align:left;}
 .sub_cont_lt i{font-size:20px;color:#fff;margin-right:5px;vertical-align:middle}
 .zoomIn {animation-name: zoomIn;}
-.modal-popup {background: #50a42f none repeat scroll 0 0;border: medium none;border-radius: 50px;padding: 1px 30px 10px;position: relative;margin-top:60px;}
+.modal-popup {background: #2fa4a2 none repeat scroll 0 0;border: medium none;border-radius: 50px;padding: 1px 30px 10px;position: relative;margin-top:60px;}
 .modal-popup a.close-link {color: #fff;font-size: 22px;position: absolute;right: 30px;top: 20px;}
 .modal-dialog #review {max-width: 650px;width: 100%;}
 .popup-form {margin: 60px auto;max-width: 375px;width: 90%;}
@@ -284,8 +284,8 @@ select.form-control.form-white {-moz-appearance: none;border-radius: 4px;height:
 #count ul li {background: rgba(0, 0, 0, 0) url("../img/dots_vert.png") no-repeat scroll left center;display: inline-block;margin: 0 10px;padding-left: 20px;text-align: center;}
 #count .number {display: inline-block;font-size: 24px;font-weight: 600;margin-right: 5px;text-align: right;width: auto;}
 .restaurant_list_detail .strip_list {background-color: #fff;border: 1px solid #ededed;border-radius:50px 2px;display: block;width:100%;line-height: 1.3;margin-bottom: 30px;min-height: 152px;padding: 20px 20px 20px;position: relative;}
-.btn_1, a.btn_1 {background: #2613a5 none repeat scroll 0 0;border: 2px solid #50a42f;border-radius: 3px;display: inline-block;font-weight: 600;padding: 10px 20px;color:#fff;transition: all 0.3s ease 0s;}
-.btn_1:hover, a.btn_1:hover {background: rgba(0, 0, 0, 0) none repeat scroll 0 0;border: 2px solid #2fa0a4;color: #50a42f;}
+.btn_1, a.btn_1 {background: #2613a5 none repeat scroll 0 0;border: 2px solid #2fa4a2;border-radius: 3px;display: inline-block;font-weight: 600;padding: 10px 20px;color:#fff;transition: all 0.3s ease 0s;}
+.btn_1:hover, a.btn_1:hover {background: rgba(0, 0, 0, 0) none repeat scroll 0 0;border: 2px solid #2fa0a4;color: #2613a5}
 #summary_review a.btn_1{display:table; text-align:center;margin:0 auto}
 .review_strip_single p{margin-bottom:40px;}
 .review_strip_single .row{text-align:center;}
@@ -325,7 +325,7 @@ select.form-control.form-white {-moz-appearance: none;border-radius: 4px;height:
 .review_strip_single .rating  i{margin-right:2px;}
 .box_style_2 .detail_con_text{font-size:14px;line-height:25px;text-align:justify;display:block}
 .nomargin_top {margin-top: 0;font-size:18px;color:#333;font-weight:500;}
-.nomargin_top i{font-size:16px; font-weight:500;color:#50a42f}
+.nomargin_top i{font-size:16px; font-weight:500;color:#2fa4a2}
 ul.opening_list {margin: 15px 0 0;padding: 0;}
 ul.opening_list li {font-weight: 600;font-size:13px;padding-bottom: 8px;padding-top:8px;border-bottom:1px solid rgba(202, 202, 202, 0.5)}
 ul.opening_list li span {float: right;font-weight: 400;}
@@ -553,7 +553,7 @@ ul.opening_list li span {float: right;font-weight: 400;}
 .services{padding:40px 0}
 .services ul li{margin-bottom:30px}
 .services li .icon{position:absolute;top:0;left:0;height:72px;width:72px;text-align:center;line-height:72px;background:rgba(25,182,37,0.75);border-radius:50%;z-index:99;-webkit-transition:all .4s ease-in-out;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;-ms-transition:all .4s ease-in-out;transition:all .4s ease-in-out}
-.services li section:before{position:absolute;bottom:-110px;content:"";height:131px;width:80px;background:#fff;right:40%;border:2px solid #4caf50;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);z-index:99}
+.services li section:before{position:absolute;bottom:-110px;content:"";height:131px;width:80px;background:#fff;right:40%;border:2px solid #2613a5;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);z-index:99}
 .services li .ser-hover{position:absolute;top:0;left:0;width:100%;height:100%}
 .services li .heading{position:absolute;bottom:30px;display:inline-block;width:100%;margin:0;padding:3px 0;text-align:center;line-height:24px;background:#4caf50;font-size:16px;font-weight:400;color:#fff;left:0;text-transform:none}
 .services .ser-hover{padding:20px;padding-top:80px;-webkit-transition:all .4s ease-in-out;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;-ms-transition:all .4s ease-in-out;transition:all .4s ease-in-out}
@@ -1087,7 +1087,7 @@ footer button{background:#002b5e;color:#fff;font-size:12px;text-transform:upperc
 .rights{background:#111;padding:20px 0;text-transform:uppercase}
 .rights p{font-size:13px;color:#fff;text-transform:none;margin:0;text-align:center}
 footer .social_icons{display:inline-block;margin-top:20px}
-footer .social_icons li{background:#4FA22F;margin-right:10px;border-radius:30px;}
+footer .social_icons li{background:#2613a5;margin-right:10px;border-radius:30px;}
 footer .social_icons a{font-size:14px;height:35px;width:35px;line-height:35px;color:#fff;border-radius:30px;}
 .error-page{padding:80px 0}
 .error-page .not-found{font-size:54px;color:#1a1a1d;display:inline-block;width:100%;font-weight:bolder;text-transform:uppercase;margin-top:20%;text-shadow:0 5px 5px rgba(0,0,0,0.5)}
