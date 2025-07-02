@@ -14,6 +14,7 @@ use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
@@ -351,7 +352,7 @@ class IndexController extends Controller
 
             $subject=$inputs['subject'];
 
-            \Mail::send('emails.contact', $data, function ($message) use ($subject){
+            Mail::send('emails.contact', $data, function ($message) use ($subject){
 
                 $message->from(getcong('site_email'), getcong('site_name'));
 

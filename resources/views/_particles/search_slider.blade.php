@@ -16,7 +16,7 @@ $total_registered_users =     \App\Models\User::getTotalUsers();
             <div class="position-relative">
               <input 
                 type="search" 
-                class="form-control ps-4 pe-5 py-3 rounded-pill shadow-sm border-light" 
+                class="form-control " 
                 placeholder="Search cafeteria name or address..." 
                 name="search_keyword" 
                 id="search_keyword" 

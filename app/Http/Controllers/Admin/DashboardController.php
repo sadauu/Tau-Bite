@@ -41,7 +41,13 @@ class DashboardController extends MainAdminController
 
             $restaurant= Restaurants::where('user_id',$user_id)->first();
 
+            
+
+            // if(!$restaurant){
+              // return redirect()->back()->with('error','User hasn\'t register for an account.');
+            // }
             $restaurant_id=$restaurant['id'];
+
 
              
 

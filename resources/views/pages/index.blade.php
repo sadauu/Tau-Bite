@@ -23,16 +23,16 @@
 
   <div class="white_bg">
    
-    <div class="container my-5">
+    <div class="container m-5">
       <div class="main_title text-center mb-4">
           <h2 class="nomargin_top">Choose from Most Popular</h2>
       </div>
       <div class="row g-4">
           @foreach($popularItems as $i => $restaurant)
-              <div class="col-12 col-md-6">
-                  <a class="strip_list d-flex align-items-center p-3 rounded shadow-sm text-decoration-none bg-white h-100" 
+              <div class="col-12 col-md-6 p-4">
+                  <a class="strip_list d-flex align-items-center p-3  rounded shadow-sm text-decoration-none bg-white h-100" 
                      href="{{ URL::to('restaurants/menu/'.$restaurant->restaurant_slug) }}">
-                      <div class="thumb_strip me-3 flex-shrink-0">
+                      <div class="thumb_strip  flex-shrink-0 m-5">
                           <img src="{{ URL::asset('upload/restaurants/'.$restaurant->restaurant_logo.'-s.jpg') }}" 
                                alt="{{ $restaurant->restaurant_name }}" 
                                class="rounded-circle" 

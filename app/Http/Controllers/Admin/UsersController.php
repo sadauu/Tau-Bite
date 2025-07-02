@@ -108,7 +108,7 @@ class UsersController extends MainAdminController
         $user->email = $inputs['email'];
         $user->mobile = $inputs['mobile'];
         $user->city = $inputs['city'];
-        $user->postal_code = $inputs['postal_code'];
+        // $user->postal_code = $inputs['postal_code'];
         $user->address = $inputs['address'];        		 
 		
 		if($inputs['password'])

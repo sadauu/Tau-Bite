@@ -18,7 +18,7 @@ a{font-family:'Open Sans',Arial,Helvetica,sans-serif;text-decoration:none;color:
 section{position:absolute;overflow:hidden;width:100%;z-index:10;top:25%;}
 .blog_section{background:#fff;border:1px solid #ececec;padding:5px}
 .btn{background:#2613a5;border:2px solid #2fa4a2;text-transform:uppercase;color:#fff;border-radius:4px;display:inline-block;padding:10px 20px;margin:0 auto;margin-top:15px;font-weight:500;-webkit-transition:all .4s ease-in-out;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;-ms-transition:all .4s ease-in-out;transition:all .4s ease-in-out}
-.btn:hover{background:none;border:2px solid #2fa4a2;color:#f8ffff;transition:all .5s ease 0;-webkit-transition:all .5s ease 0;-moz-transition:all .5s ease 0}
+.btn:hover{background:none;border:2px solid #2fa4a2;color:#2613a5;transition:all .5s ease 0;-webkit-transition:all .5s ease 0;-moz-transition:all .5s ease 0}
 .margin-r-20{margin-right:20px}
 .margin-l-20{margin-left:20px}
 .margin-t-20{margin-top:20px}
@@ -1130,3 +1130,21 @@ footer .social_icons a{font-size:14px;height:35px;width:35px;line-height:35px;co
 .b-infoblock-with-icon__icon {background: #f7d032 none repeat scroll 0 0;border: 2px solid transparent;border-radius: 50%;display: block;margin: 0 auto 15px;padding: 18px 5px;position: relative;text-align: center;transition: background 0.7s ease 0s;}
 .hi-icon-effect-8 .hi-icon:hover::after {animation: 1.3s ease-out 75ms normal none 20 running sonarEffect;}	
 .hi-icon-effect-8 .hi-icon:hover {background: #fff none repeat scroll 0 0;border: 2px solid #7dbf18;color:#7dbf18}	
+.payment-successful {width: fit-content; margin: 15rem auto 15rem auto; padding: 1.5rem 2rem;background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); font-weight: 600; text-align: center; z-index: 1000;}
+.payment-failed { width: fit-content; margin: 15rem auto 15rem auto; padding: 1.5rem 2rem; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); font-weight: 600; text-align: center; z-index: 1000;}
+.search-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-input {
+    padding-right: 3rem;
+    /* make space for the button inside */
+    padding-left: 1.25rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-radius: 8px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid #ddd;
+}
+

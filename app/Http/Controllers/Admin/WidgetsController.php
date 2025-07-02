@@ -44,11 +44,11 @@ class WidgetsController extends MainAdminController
 	    $inputs = $request->all();
 		
 		     
-		$widgets->footer_widget1_title = $inputs['footer_widget1_title'];
-		$widgets->footer_widget1_desc = $inputs['footer_widget1_desc'];
+		// $widgets->footer_widget1_title = $inputs['footer_widget1_title'];
+		// $widgets->footer_widget1_desc = $inputs['footer_widget1_desc'];
 
-		$widgets->footer_widget2_title = $inputs['footer_widget2_title'];
-		$widgets->footer_widget2_desc = $inputs['footer_widget2_desc'];
+		// $widgets->footer_widget2_title = $inputs['footer_widget2_title'];
+		// $widgets->footer_widget2_desc = $inputs['footer_widget2_desc'];
 
 		$widgets->footer_widget3_title = $inputs['footer_widget3_title'];
 		$widgets->footer_widget3_address = $inputs['footer_widget3_address'];

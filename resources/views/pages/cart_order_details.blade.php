@@ -139,6 +139,8 @@
             </tbody>
           </table>
           <hr>
+          <h3>Delivery Now!</h3>
+          <hr>
           <form method="GET" action="{{ url('/pay') }}">
     <button type="submit" class="btn_full">Confirm Your Order</button>
 </form>

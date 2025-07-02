@@ -1,8 +1,9 @@
 @extends('app')
 @section('head_title', 'Payment Successful | ' . getcong('site_name'))
 @section('content')
-<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+<br>
+<div class="d-flex justify-content-center align-items-center" >
+    <div class="p-5 payment-successful " style="max-width: 600px; width: 100%;">
         <div class="text-center mb-4">
             <svg width="64" height="64" fill="none" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="12" fill="#28a745" opacity="0.1"/>
@@ -18,4 +19,5 @@
         </div>
     </div>
 </div>
+<br>
 @endsection
