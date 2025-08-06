@@ -13,8 +13,10 @@ use App\Models\User;
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image; 
+use Intervention\Image\Facades\Image;
+
 use Session;
 
 
@@ -102,23 +104,33 @@ class RestaurantsController extends MainAdminController
         }
 
         //Logo image
+        $destination_path = public_path('upload/restaurants');
+
+        if(!file_exists($destination_path)){
+            mkdir($destination_path, 0755, true);
+        }
+
         $restaurant_logo = $request->file('restaurant_logo');
-         
+        // ->store($destination_path, 'public');
+
+        // $restaurant_logo->move($destination_path, )
         if($restaurant_logo){
             
-             \File::delete(public_path() .'/upload/restaurants/'.$restaurant_obj->restaurant_logo.'-b.jpg');
-            \File::delete(public_path() .'/upload/restaurants/'.$restaurant_obj->restaurant_logo.'-s.jpg');
+             \File::delete(public_path() .'/upload/restaurants/'.$restaurant_obj->restaurant_logo);
             
             $tmpFilePath = 'upload/restaurants/';          
              
             $hardPath = substr($restaurant_slug,0,100).'_'.time();
-            
-            $img = Image::make($restaurant_logo);
+            $fileName = $hardPath .'.'. $restaurant_logo->getClientOriginalExtension();
+            $img = Storage::url($restaurant_logo);
 
-            $img->fit(120, 120)->save($tmpFilePath.$hardPath.'-b.jpg');
-            $img->fit(98, 98)->save($tmpFilePath.$hardPath. '-s.jpg');
+            $restaurant_logo->move($tmpFilePath, $fileName);
+            asset($tmpFilePath.$fileName);
 
-            $restaurant_obj->restaurant_logo = $hardPath;
+            // $img->fit(120, 120)->save($tmpFilePath.$hardPath.'-b.jpg');
+            // $img->fit(98, 98)->save($tmpFilePath.$hardPath. '-s.jpg');
+
+            $restaurant_obj->restaurant_logo = $fileName;
              
         }
 		

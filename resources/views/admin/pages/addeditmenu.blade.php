@@ -70,7 +70,7 @@
                     <label for="" class="col-sm-3 control-label">Price</label>
                       <div class="col-sm-9">
                          
-                        <input id="touch-spin-2" data-toggle="touch-spin" data-min="-1000000" data-max="1000000" data-prefix="$" data-step="1" type="text" value="{{ isset($menu->price) ? $menu->price : null }}" name="price" class="form-control"/>
+                        <input id="touch-spin-2" data-toggle="touch-spin" data-min="-1000000" data-max="1000000" data-prefix="₦" data-step="1" type="text" value="{{ isset($menu->price) ? $menu->price : null }}" name="price" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -80,7 +80,7 @@
                             <div class="media-left">
                                 @if(isset($menu->menu_image))
                                  
-                                    <img src="{{ URL::asset('upload/menu/'.$menu->menu_image.'-s.jpg') }}" width="100" alt="person">
+                                    <img src="{{ URL::asset('upload/menu/'.$menu->menu_image) }}" width="100" alt="person">
                                 @endif
                                                                 
                             </div>

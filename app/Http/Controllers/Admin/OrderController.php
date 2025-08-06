@@ -38,8 +38,25 @@ class OrderController extends MainAdminController
         }
         
         $restaurant_id=$id; 
+        // Group orders by address (from users table)
+        $ordersByAddress = DB::table('restaurant_order')
+        ->join('users', 'restaurant_order.user_id', '=', 'users.id')
+        ->select('users.address', DB::raw('COUNT(*) as total_orders'))
+        ->whereIn('restaurant_order.status', ['processing', 'pending']) // ✅ Only include processing or pending
+        ->groupBy('users.address')
+        ->orderByDesc('total_orders')
+        ->get();
 
-        return view('admin.pages.order_list',compact('order_list','restaurant_id'));
+// Group orders by campus (from users table)
+        $ordersByCampus = DB::table('restaurant_order')
+            ->join('users', 'restaurant_order.user_id', '=', 'users.id')
+            ->select('users.campus', DB::raw('COUNT(*) as total_orders'))
+        ->whereIn('restaurant_order.status', ['processing', 'pending']) // ✅ Only include processing or pending
+            ->groupBy('users.campus')
+            ->orderByDesc('total_orders')
+            ->get();
+
+        return view('admin.pages.order_list',compact('order_list','restaurant_id', 'ordersByAddress', 'ordersByCampus'));
     }
     
     public function alluser_order()    { 

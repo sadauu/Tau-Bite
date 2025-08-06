@@ -7,15 +7,24 @@
 	<div class="page-header">
 		
 		
-		<h2>Order Lists</h2>
-
+    <h2 style="text-align:center;">Orders by Address</h2>
+    <div class="orders-container">
         @foreach($ordersByAddress as $group)
-    <p>{{ $group->address }}: {{ $group->total_orders }} orders</p>
-@endforeach
-
-@foreach($ordersByCampus as $group)
-    <p>{{ $group->campus }}: {{ $group->total_orders }} orders</p>
-@endforeach
+            <div class="order-card">
+                <div class="order-address">{{ $group->address }}</div>
+                <div class="order-total">{{ $group->total_orders }} orders</div>
+            </div>
+        @endforeach
+    </div>
+    <h2 style="text-align:center;">Orders by Campus</h2>
+    <div class="orders-container">
+        @foreach($ordersByCampus as $group)
+            <div class="order-card">
+                <div class="order-campus">{{ $group->campus }}</div>
+                <div class="order-total">{{ $group->total_orders }} orders</div>
+            </div>
+        @endforeach
+    </div>
         <a href="{{ URL::to('admin/restaurants/view/'.$restaurant_id) }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back Restaurant</a>
 	</div>
 	@if(Session::has('flash_message'))

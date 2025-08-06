@@ -78,7 +78,7 @@
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Widget Title</label>
                     <div class="col-sm-9">
-                        <input type="text" name="footer_widget3_title" value="{{ $widgets->footer_widget2_title }}" class="form-control" value="">
+                        <input type="text" name="footer_widget3_title" value="{{ $widgets->footer_widget3_title }}" class="form-control" value="">
                     </div>
                 </div>                
                 <div class="form-group">

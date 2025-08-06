@@ -54,7 +54,7 @@ header nav{float:none}
 .animenu ul li ul li{text-align:left}
 ul.animenu_nav_child{text-align:left;width:220px;}
 header .logo {border-bottom: 1px solid #ccc;float: left;margin: 15px 0 0;padding-bottom: 15px;text-align: center;width: 100%;}
-.restaurant_list_detail .thumb_strip{border:1px solid #d3d3d3;border-radius: 20%;height: 125px;left: 0;padding: 5px;position: relative;top: 0;width: 125px;margin:0 auto 10px auto}
+.restaurant_list_detail .thumb_strip{border-radius: 20%;height: 125px;left: 0;padding: 5px;position: relative;top: 0;width: 125px;margin:0 auto 10px auto}
 .strip_list .go_to{display: table;height: auto;margin-top: 6%;text-align: center;width: 100%;}
 .restaurant_list_detail .desc {min-height: 125px;padding-left:0px;padding-right:0px;position: relative;}
 .restaurant_list_detail .desc h3 {margin-top: 6px;text-align:center;text-transform: none;}
@@ -132,7 +132,7 @@ header .logo{display:inline-block;margin:10px 0 0;padding-bottom:10px;text-align
 .desc .location{text-align:left}
 .desc .type{text-align:left}
 .strip_list .desc h3{text-align:left}
-.restaurant_list_detail .thumb_strip{border:1px solid #d3d3d3;border-radius: 20%;height: 125px;left: 0;padding: 5px;position: relative;top: 0;width: 125px;margin:0 auto 10px auto}
+.restaurant_list_detail .thumb_strip{border-radius: 20%;height: 125px;left: 0;padding: 5px;position: relative;top: 0;width: 125px;margin:0 auto 10px auto}
 .strip_list .go_to{display: table;height: auto;margin-top: 6%;text-align: center;width: 100%;}
 .restaurant_list_detail .desc {min-height: 125px;padding-left:0px;padding-right:0px;position: relative;padding-top:0px;}
 .restaurant_list_detail .desc h3 {margin-top: 6px;text-align:center;text-transform: none;}

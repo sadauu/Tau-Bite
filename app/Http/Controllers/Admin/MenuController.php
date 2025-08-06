@@ -11,6 +11,7 @@ use App\Models\User;
 
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image; 
 use Session;
 
@@ -88,24 +89,29 @@ class MenuController extends MainAdminController
 
         }
 		
+        $destination_path = public_path('upload/menu');
+
+        if(!file_exists($destination_path)){
+            mkdir($destination_path, 0755, true);
+        }
         //Logo image
         $menu_image = $request->file('menu_image');
          
         if($menu_image){
             
-             \File::delete(public_path() .'/upload/menu/'.$menu->menu_image.'-b.jpg');
-            \File::delete(public_path() .'/upload/menu/'.$menu->menu_image.'-s.jpg');
+             \File::delete(public_path() .'/upload/menu/'.$menu->menu_image);
             
             $tmpFilePath = 'upload/menu/';          
              
             $hardPath = substr($inputs['menu_name'],0,100).'_'.time();
-            
-            $img = Image::make($menu_image);
+            $fileName = $hardPath .'.'. $menu_image->getClientOriginalExtension();
+            $img = Storage::url($menu_image);
+            $menu_image->move($tmpFilePath, $fileName);
+            asset($tmpFilePath.$fileName);
+            // $img->save($tmpFilePath.$hardPath.'-b.jpg');
+            // $img->fit(100, 100)->save($tmpFilePath.$hardPath. '-s.jpg');
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
-            $img->fit(100, 100)->save($tmpFilePath.$hardPath. '-s.jpg');
-
-            $menu->menu_image = $hardPath;
+            $menu->menu_image = $fileName;
              
         }
 		 

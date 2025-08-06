@@ -46,7 +46,7 @@
                             <div class="media-left">
                                 @if(isset($type->type_image))
                                  
-                                    <img src="{{ URL::asset('upload/type/'.$type->type_image.'.jpg') }}" width="100" alt="person">
+                                    <img src="{{ URL::asset('upload/type/'.$type->type_image) }}" width="100" alt="person">
                                 @endif
                                                                 
                             </div>

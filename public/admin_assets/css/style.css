@@ -18656,3 +18656,43 @@ span.fancytree-node.fancytree-active .fancytree-expander {
 }
 .bootstrap-tagsinput{border:1px solid #dddddd}
 .bootstrap-tagsinput input{width: 46em !important;}
+.orders-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.order-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 2rem;
+  min-width: 250px;
+  max-width: 300px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.order-campus {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.order-address {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.order-total {
+  font-size: 1rem;
+  color: #555;
+}

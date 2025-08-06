@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Types;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Session;
 use Intervention\Image\Facades\Image; 
 
@@ -76,24 +77,32 @@ class TypesController extends MainAdminController
 
         }
 
+        $destination_path = public_path('upload/type');
+
+        if(!file_exists($destination_path)){
+            mkdir($destination_path, 0755, true);
+        }
+
         //News image
         $type_image = $request->file('type_image');
          
         if($type_image){
             
-             \File::delete(public_path() .'/upload/type/'.$type_obj->type_image.'.jpg');
+             \File::delete(public_path() .'/upload/type/'.$type_obj->type_image);
              
             
             $tmpFilePath = 'upload/type/';          
              
             $hardPath = substr($inputs['type'],0,100).'_'.time();
+            $fileName = $hardPath .'.'. $type_image->getClientOriginalExtension();
             
-            $img = Image::make($type_image);
+            $img = Storage::url($type_image);
 
-            $img->fit(160, 160)->save($tmpFilePath.$hardPath.'.jpg');
+            $type_image->move($tmpFilePath, $fileName);
+            asset($tmpFilePath . $fileName);
             //$img->fit(98, 98)->save($tmpFilePath.$hardPath. '-s.jpg');
 
-            $type_obj->type_image = $hardPath;
+            $type_obj->type_image = $fileName;
              
         }
 		 

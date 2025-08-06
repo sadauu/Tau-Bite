@@ -200,10 +200,10 @@ class SettingsController extends MainAdminController
             
              
         }
-		 
-		$settings->total_restaurant = $inputs['total_restaurant']; 
-		$settings->total_people_served = $inputs['total_people_served']; 
-		$settings->total_registered_users = $inputs['total_registered_users']; 
+
+		// $settings->total_restaurant = $inputs['total_restaurant']; 
+		// $settings->total_people_served = $inputs['total_people_served']; 
+		// $settings->total_registered_users = $inputs['total_registered_users']; 
 		 
 	    $settings->save();
 
