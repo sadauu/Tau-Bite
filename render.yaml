@@ -2,6 +2,7 @@ services:
   - type: web
     name: tau-bite
     env: php
+    phpVersion: "8.3" 
     region: oregon
     plan: free
     buildCommand: "composer install && npm ci && npm run build && php artisan key:generate"
